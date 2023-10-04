@@ -18,7 +18,7 @@
                         <div class="flex justify-center py-4 lg:pt-4 pt-8">
                             <div class="mr-4 p-3 text-center">
                                 <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                    0
+                                    3
                                 </span>
                                 <span class="text-sm text-blueGray-400">Music Styles</span>
                             </div>
@@ -32,18 +32,32 @@
                     </div>
                 </div>
                 <div class="text-center mt-12">
-                    <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+                    <h3 class="text-2xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                         {{ old('name', $user->name) }}
                     </h3>
                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                         Most listening place :
                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                        Los Angeles, California
+                        Lyon, France
                     </div>
                     <div class="mb-2 text-blueGray-600 mt-10">
                         <i class="fas fa-headphones-alt mr-2 text-lg text-blueGray-400"></i>
-                        Pop / Rock / Fonk
+                        Music Styles <br><br>
+                        <div class="flex space-x-4 justify-center">
+                            <div class="bg-pink-200 rounded-full p-2">Pop</div>
+                            <div class="bg-emerald-200 rounded-full p-2">Rock</div>
+                            <div class="bg-red-200 rounded-full p-2">Funk</div>
+                        </div>
                     </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+                            <br>Most Listened Artists
+                        </h3>
+                        <div id="artist1"></div>
+                        <div id="artist2"></div>
+                        <div id="artist3"></div>
+                    </div>
+
                 </div>
                 <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
                     <div class="flex flex-wrap justify-center">
