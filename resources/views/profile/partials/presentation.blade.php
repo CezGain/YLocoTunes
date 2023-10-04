@@ -3,14 +3,14 @@
     href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
 <section class="pt-16">
-    <div class="w-full lg:w-4/12 px-4 mx-auto">
-        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-xl rounded-lg mt-16">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
             <div class="px-6">
                 <div class="flex flex-wrap justify-center">
                     <div class="w-full px-4 flex justify-center">
                         <div class="relative">
                             <img alt="..."
-                                src="https://archive.mpi.nl/mpi/islandora/object/lat%3A1839_626142d5_4502_4736_92a8_3c70b1de0de0/datastream/MEDIUM_SIZE/view"
+                                src="https://static.vecteezy.com/system/resources/previews/008/422/689/original/social-media-avatar-profile-icon-isolated-on-square-background-vector.jpg"
                                 class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
                         </div>
                     </div>
