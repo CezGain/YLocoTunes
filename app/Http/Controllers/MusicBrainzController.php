@@ -59,7 +59,6 @@ class MusicBrainzController extends Controller
         }
     }
 
-
     private function getGoodAreaId($regionName, mixed $areas)
     {
         foreach ($areas as $area) {
