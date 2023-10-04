@@ -2,7 +2,7 @@
 <link rel="stylesheet"
     href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-<section class="pt-16 bg-blueGray-50">
+<section class="pt-16">
     <div class="w-full lg:w-4/12 px-4 mx-auto">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-xl rounded-lg mt-16">
             <div class="px-6">
