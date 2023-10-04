@@ -45,4 +45,6 @@ Route::get('/lastfm/artists/{location}', [LastFmController::class, 'getArtistsBy
 
 Route::get('/musicbrainz/artists/{region}', [MusicBrainzController::class, 'getArtistsByRegion']);
 
+Route::get('/musicbrainz/releases/{artistname}', [MusicBrainzController::class, 'getReleasesByArtist']);
+
 require __DIR__.'/auth.php';
