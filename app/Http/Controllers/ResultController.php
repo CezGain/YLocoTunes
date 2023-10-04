@@ -9,9 +9,10 @@ class ResultController extends Controller
     public function showGrid()
     {
         $data = [
-            ['id' => 1, 'name' => 'Item 1', 'description' => 'Description 1'],
-            ['id' => 2, 'name' => 'Item 2', 'description' => 'Description 2'],
-            ['id' => 3, 'name' => 'Item 3', 'description' => 'Description 3'],
+            ['id' => 1, 'name' => 'Artiste 1', 'description' => 'Musique 1'],
+            ['id' => 2, 'name' => 'Artiste 2', 'description' => 'Musique 2'],
+            ['id' => 3, 'name' => 'Artiste 3', 'description' => 'Musique 3'],
+            
         ];
 
         return view('results', compact('data'));
