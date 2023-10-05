@@ -30,7 +30,9 @@
                         alert("Veuillez cliquer dans le champ pour connaitre votre localisation.");
                         return false; // Empêche l'envoi du formulaire
                     }
-                    return true; // Le formulaire sera soumis si le champ de texte contient une valeur
+                    document.cookie = "inputValue=" + inputValue +";";
+                    window.location.href = "/filters";
+                    return false; // Le formulaire sera soumis si le champ de texte contient une valeur
                 }
 
                 document.getElementById('myInput').addEventListener('click', function() {

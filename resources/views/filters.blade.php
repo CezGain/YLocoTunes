@@ -81,8 +81,10 @@
         }
 
         document.getElementById("validated").addEventListener("click", function() {
+            // console.log(document.cookie.split(";")[0].split("=")[1]); pour récupérer ma ptite ville avec mon petit cookie
             document.getElementById("styleData").value = JSON.stringify(allStyle);
             document.getElementById("styleForm").submit();
+            return false;
         });
     </script>
 </x-template>
