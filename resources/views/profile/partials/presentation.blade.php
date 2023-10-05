@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
 <link rel="stylesheet"
     href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-
 <section class="pt-16">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -51,15 +50,15 @@
                     </div>
                     <div>
                         <h3 class="text-2xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                            <br>Recent Listened Artists
+                            <br>Recently Listened Artists
                         </h3>
                         <div class="flex flex-wrap justify-center">
                             <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/LowroarRyan.jpg"
                                     alt="" srcset="" class="w-20 h-20 rounded-lg mx-auto">
-                                Name<br>
+                                Low Roar<br>
                                 <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                Lyon, France<br>
+                                Lyon, France<br><br>
                                 <div class="flex space-x-4 justify-center">
                                     <div class="bg-pink-200 rounded-full p-2">Pop</div>
                                     <div class="bg-emerald-200 rounded-full p-2">Rock</div>
@@ -71,7 +70,7 @@
                                     alt="" srcset="" class="w-20 h-20 rounded-lg mx-auto">
                                 Name<br>
                                 <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                Lyon, France<br>
+                                Lyon, France<br><br>
                                 <div class="flex space-x-4 justify-center">
                                     <div class="bg-pink-200 rounded-full p-2">Pop</div>
                                     <div class="bg-emerald-200 rounded-full p-2">Rock</div>
@@ -83,7 +82,7 @@
                                     alt="" srcset="" class="w-20 h-20 rounded-lg mx-auto">
                                 Name<br>
                                 <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                Lyon, France<br>
+                                Lyon, France<br><br>
                                 <div class="flex space-x-4 justify-center">
                                     <div class="bg-pink-200 rounded-full p-2">Pop</div>
                                     <div class="bg-emerald-200 rounded-full p-2">Rock</div>
@@ -91,9 +90,7 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
                 <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
                     <div class="flex flex-wrap justify-center">
