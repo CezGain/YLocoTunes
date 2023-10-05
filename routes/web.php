@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpotifyController;
+use App\Http\Controllers\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', [ViewController::class, 'welcome'])->name('welcome');
 Route::get('/login', [ViewController::class, 'login'])->name('login');
 Route::get('/register', [ViewController::class, 'register'])->name('register');
 Route::get('/filters', [ViewController::class, 'filters'])->name("filters");
+Route::get('/results', [ResultController::class, 'showGrid']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ViewController::class, 'dashboard'])->name("dashboard");
