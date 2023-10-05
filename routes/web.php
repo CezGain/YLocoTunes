@@ -31,5 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/musicbrainz/artists/{region}', [MusicBrainzController::class, 'getArtistsByRegion'])->name('musicbrainz.region');
+Route::get('/musicbrainz/releases/{artistname}', [MusicBrainzController::class, 'getReleasesByArtist'])->name('musicbrainz.tracks');
 
 require __DIR__ . '/auth.php';

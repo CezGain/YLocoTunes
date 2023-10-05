@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\MusicBrainzController;
 use Illuminate\Http\Request;
-
 class ResultController extends Controller
 {
     public function showGrid()
     {
-        $data = [
-            ['id' => 1, 'name' => 'Artiste 1', 'musique' => 'Musique 1'],
-            ['id' => 2, 'name' => 'Artiste 2', 'musique' => 'Musique 2'],
-            ['id' => 3, 'name' => 'Artiste 3', 'musique' => 'Musique 3'],
-            ['id' => 1, 'name' => 'Artiste 1', 'musique' => 'Musique 1'],
-            ['id' => 2, 'name' => 'Artiste 2', 'musique' => 'Musique 2'],
-            ['id' => 3, 'name' => 'Artiste 3', 'musique' => 'Musique 3'],
-            ['id' => 1, 'name' => 'Artiste 1', 'musique' => 'Musique 1'],
-            ['id' => 2, 'name' => 'Artiste 2', 'musique' => 'Musique 2'],
-            ['id' => 3, 'name' => 'Artiste 3', 'musique' => 'Musique 3'],
-            ['id' => 1, 'name' => 'Artiste 1', 'musique' => 'Musique 1'],
-            ['id' => 2, 'name' => 'Artiste 2', 'musique' => 'Musique 2'],
-            ['id' => 3, 'name' => 'Artiste 3', 'musique' => 'Musique 3'],
-        ];
-        return view('results', compact('data'));
+        $data = (new MusicBrainzController)->getArtistsByRegion($_COOKIE['inputValue']);
+        $musics = [];
+        foreach ($data as $artist) {
+            if ($artist != null) {
+                $name = $artist['name'];
+                $releasesByArtist = (new MusicBrainzController)->getReleasesByArtist($name);
+                if (is_array($releasesByArtist)) {
+                    $firstThreeReleases = array_slice($releasesByArtist, 0, 3);
+                    $musics[] = $firstThreeReleases;
+                }
+            }
+        }
+
+        dump($musics);
+        return view('results', compact('data', 'musics'));
     }
 }
