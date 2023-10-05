@@ -1,22 +1,6 @@
-<x-template>
+<x-template showHeader="true">
     <div
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-lighter bg-center bg-gray-800 selection:bg-red-500 selection:text-white">
-        @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                @auth
-                    <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-gray-400 hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Panel</a>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-400 hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Connexion</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-400 hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Inscription</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
                 <img src="https://cdn.discordapp.com/attachments/1158671272331460638/1159073991739314206/5dfcbb2ebf5a4492911803a08e44ccc0-removebg-preview.png?ex=651e8f46&is=651d3dc6&hm=f0dea518a8a8a083e98a9be9fd721314bbfeeb666f524350d397a1b9f93b0d94&"
@@ -46,8 +30,7 @@
                         alert("Veuillez cliquer dans le champ pour connaitre votre localisation.");
                         return false; // Empêche l'envoi du formulaire
                     }
-                    window.location.href = "/filters?inputValue=" + inputValue;
-                    return false; // Le formulaire sera soumis si le champ de texte contient une valeur
+                    return true; // Le formulaire sera soumis si le champ de texte contient une valeur
                 }
 
                 document.getElementById('myInput').addEventListener('click', function() {
