@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\LastFmController;
+use App\Http\Controllers\MusicBrainzController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SpotifyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +29,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/spotify/track/{trackId}', [SpotifyController::class, 'getTrackInfo']);
+
+Route::get('/lastfm/artists/{location}', [LastFmController::class, 'getArtistsByLocation']);
+
+Route::get('/musicbrainz/artists/{region}', [MusicBrainzController::class, 'getArtistsByRegion']);
+
+Route::get('/musicbrainz/releases/{artistname}', [MusicBrainzController::class, 'getReleasesByArtist']);
 
 require __DIR__ . '/auth.php';

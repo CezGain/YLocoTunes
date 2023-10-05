@@ -185,4 +185,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'Soundcloud' => Noweh\SoundcloudApi\SoundcloudFacade::class,
+
 ];
