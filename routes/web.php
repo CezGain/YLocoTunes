@@ -30,12 +30,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/spotify/track/{trackId}', [SpotifyController::class, 'getTrackInfo']);
-
-Route::get('/lastfm/artists/{location}', [LastFmController::class, 'getArtistsByLocation']);
-
-Route::get('/musicbrainz/artists/{region}', [MusicBrainzController::class, 'getArtistsByRegion']);
-
-Route::get('/musicbrainz/releases/{artistname}', [MusicBrainzController::class, 'getReleasesByArtist']);
-
 require __DIR__ . '/auth.php';
