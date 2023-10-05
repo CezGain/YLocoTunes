@@ -17,7 +17,7 @@
                 @endforeach
             </div>
         </div>
-        <form id="styleForm" action="/filters" method="GET" class="sub-container" style="height: 12%;">
+        <form id="styleForm" action="/results" method="GET" class="sub-container" style="height: 12%;">
             @csrf
             <input type="hidden" id="styleData" name="styleData" value="">
             <button type="submit" id="validated">VALIDER</button>
@@ -28,7 +28,7 @@
         .container {
             display: flex;
             flex-direction: column;
-            height: 90%;
+            height: 100%;
             width: 100%;
             justify-content: space-evenly;
             align-items: center;

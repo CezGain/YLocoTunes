@@ -9,8 +9,14 @@
         @if ($showHeader)
             <x-header-bar></x-header-bar>
             <div class="h-12 w-full"></div>
+            <div class="w-full" style="height: 88%">
+                {{ $slot }}
+            </div>
+        @else
+            <div class="h-100 w-full">
+                {{ $slot }}
+            </div>
         @endif
-        {{ $slot }}
     </div>
 </body>
 
