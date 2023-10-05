@@ -88,6 +88,7 @@
                     <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
                         <div class="flex items-center gap-4 select-none">
                             <a href="https://github.com/CezGain/YLocoTunes/tree/main" target="_blank" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                <script src="https://kit.fontawesome.com/f98f7366b1.js" crossorigin="anonymous"></script>    
                                 <i class="fa-brands fa-github text-base"></i>
                             </a>
                         </div>
