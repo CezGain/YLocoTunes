@@ -58,24 +58,23 @@
                                     if (city) {
                                         document.getElementById('myInput').value = city;
                                     } else {
-                                        document.getElementById('myInput').value =
-                                            'Impossible de déterminer la ville.';
+                                        document.getElementById('myInput').placeholder =
+                                            'Ville introuvable.';
                                     }
                                 })
                                 .catch(function(error) {
                                     // Gérer les erreurs de géocodage ici
-                                    document.getElementById('myInput').value =
-                                        'Erreur lors de la récupération de la ville : ' + error.message;
+                                    document.getElementById('myInput').placeholder =
+                                        'Erreur de récupération';
                                 });
                         }, function(error) {
                             // Gérer les erreurs de géolocalisation ici
-                            document.getElementById('myInput').value = 'Impossible d\'obtenir votre position : ' +
-                                error.message;
+                            document.getElementById('myInput').placeholder = 'Position introuvable';
                         });
                     } else {
                         // Le navigateur ne prend pas en charge la géolocalisation
-                        document.getElementById('myInput').value =
-                            'La géolocalisation n\'est pas prise en charge par votre navigateur.';
+                        document.getElementById('myInput').placeholder =
+                            'La localisation n\'est pas dispo.';
                     }
                 });
             </script>
