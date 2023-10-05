@@ -34,7 +34,7 @@ class MusicBrainzController extends Controller
             return response()->json(['error' => 'Region not found'], 404);
         }
         $response = Http::get("https://musicbrainz.org/ws/2/artist/", [
-            'area' => "$areaId",
+            'area' => $areaId,
             'fmt' => 'json',
         ]);
         if ($response->successful()) {
