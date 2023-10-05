@@ -55,7 +55,7 @@
                             <br>Recently Listened Artists
                         </h3>
                         <div class="flex flex-wrap justify-center">
-                            <div class="bg-white bg-opacity-25 p-2 rounded-lg shadow-md m-2 text-center">
+                            <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/LowroarRyan.jpg"
                                     alt="" srcset="" class="w-20 h-20 rounded-lg mx-auto">
                                 Low Roar<br>
