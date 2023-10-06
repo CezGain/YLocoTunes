@@ -34,4 +34,9 @@ class ViewController extends Controller
     {
         return view('login');
     }
+
+    public function events(): View
+    {
+        return view('events');
+    }
 }
