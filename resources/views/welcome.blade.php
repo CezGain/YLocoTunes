@@ -7,10 +7,9 @@
                     alt="logo" border="0" class="w-20 h-20">
             </div>
             <div class="p-4 m-10">
-                <input type="text" id="myInput" placeholder="Cliquez pour localiser"
+                <!--<input type="text" id="myInput" placeholder="Cliquez pour localiser"
                     class="text-center text-white bg-gray-800 min-w-[250px] p-2 border rounded w-1/2"
-                    style="cursor: pointer;" readonly required/>
-                <br><br>
+                    style="cursor: pointer;" readonly required/>-->
                 <div class="flex justify-between">
                     <button id="button-3" onclick="goToEvents()" id="toEvent"><i class="fa-solid fa-magnifying-glass"></i> Événements</button>
                     <button id="button-3" onclick="goToArtists()" id="toArtists"><i class="fa-solid fa-magnifying-glass"></i> Artistes</button>
@@ -41,6 +40,8 @@
                   touch-action: manipulation;
                   vertical-align: middle;
                   white-space: nowrap;
+                  margin-right: 20px;
+                  margin-left: 20px;
                 }
 
                 .button-3:focus:not(:focus-visible):not(.focus-visible) {
@@ -72,69 +73,14 @@
 
             <script>
                 function goToEvents() {
-                    if (!isLocation()) return;
                     window.location.href = "/events";
                     return false;
                 }
 
                 function goToArtists() {
-                    if (!isLocation()) return;
                     window.location.href = "/filters";
                     return false;
                 }
-
-                function isLocation() {
-                    const inputValue = document.getElementById("myInput").value;
-                    if (inputValue.trim() === "") {
-                        alert("Veuillez cliquer dans le champ pour connaitre votre localisation.");
-                        return false; // Empêche l'envoi du formulaire
-                    }
-                    document.cookie = "inputValue=" + inputValue + ";";
-                    return true; // Le formulaire sera soumis si le champ de texte contient une valeur
-                }
-
-                document.getElementById('myInput').addEventListener('click', function() {
-                    if (navigator.geolocation) {
-                        document.getElementById('myInput').placeholder = 'Chargement en cours...';
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            var latitude = position.coords.latitude;
-                            var longitude = position.coords.longitude;
-
-                            // Appel à l'API de géocodage inversé OpenStreetMap Nominatim
-                            var apiUrl =
-                                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-
-                            fetch(apiUrl)
-                                .then(function(response) {
-                                    return response.json();
-                                })
-                                .then(function(data) {
-                                    // Récupération de la ville à partir des résultats
-                                    var city = data.address.city;
-
-                                    // Mise à jour du texte de myInput avec le nom de la ville
-                                    if (city) {
-                                        document.getElementById('myInput').value = city;
-                                    } else {
-                                        document.getElementById('myInput').placeholder =
-                                            'Ville introuvable.';
-                                    }
-                                })
-                                .catch(function(error) {
-                                    // Gérer les erreurs de géocodage ici
-                                    document.getElementById('myInput').placeholder =
-                                        'Erreur de récupération';
-                                });
-                        }, function(error) {
-                            // Gérer les erreurs de géolocalisation ici
-                            document.getElementById('myInput').placeholder = 'Position introuvable';
-                        });
-                    } else {
-                        // Le navigateur ne prend pas en charge la géolocalisation
-                        document.getElementById('myInput').placeholder =
-                            'La localisation n\'est pas dispo.';
-                    }
-                });
             </script>
             <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">

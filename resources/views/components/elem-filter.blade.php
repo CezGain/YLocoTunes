@@ -17,7 +17,7 @@ text-align: center;
     onclick="onStyleClick(this, '{{ $slot }}')">
     <p
         style="font-size: 100%; font-weight: 600; cursor: pointer;
-     user-select: none;
+     user-select: none; text-transform: capitalize;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE/Edge */">
