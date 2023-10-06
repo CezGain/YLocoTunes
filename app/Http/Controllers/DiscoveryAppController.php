@@ -22,18 +22,18 @@ class DiscoveryAppController extends Controller
 
         try {
             $response = Http::asForm()->get($url);
-
             $data = $response->json();
-
-            // Check if there are events found
             if (isset($data['page']['totalElements']) && $data['page']['totalElements'] > 0) {
                 $eventsData = $data['_embedded']['events'];
+                usort($eventsData, function($a,$b){
+                    return strtotime($a['dates']['start']['dateTime']) - strtotime($b['dates']['start']['dateTime']);
+                });
                 return ['eventsData' => $eventsData];
             } else {
-                return ['eventsData' => []]; // No events found
+                return ['eventsData' => []];
             }
         } catch (\Exception $e) {
-            return ['error' => $e->getMessage()]; // Handle exceptions
+            return ['error' => $e->getMessage()];
         }
     }
 

@@ -24,7 +24,7 @@ Route::get('/login', [ViewController::class, 'login'])->name('login');
 Route::get('/register', [ViewController::class, 'register'])->name('register');
 Route::get('/filters', [ViewController::class, 'filters'])->name("filters");
 Route::get('/events', [ViewController::class, 'events'])->name("events");
-Route::get('/results', [ResultController::class, 'showGrid']);
+Route::get('/artists', [ResultController::class, 'showGrid']);
 
 
 Route::middleware('auth')->group(function () {
@@ -33,6 +33,5 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/spotify/tracks/{artistname}', [SpotifyController::class, 'getTrackByArtistName'])->name('spotify.artist');
 
 require __DIR__ . '/auth.php';
