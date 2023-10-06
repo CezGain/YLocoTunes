@@ -6,20 +6,22 @@
                 <img src="https://cdn.discordapp.com/attachments/1158671272331460638/1159073991739314206/5dfcbb2ebf5a4492911803a08e44ccc0-removebg-preview.png?ex=651e8f46&is=651d3dc6&hm=f0dea518a8a8a083e98a9be9fd721314bbfeeb666f524350d397a1b9f93b0d94&"
                     alt="logo" border="0" class="w-20 h-20">
             </div>
+            <div class="text-white text-center text-xl m-10 select-none">Avec YLocoTunes,</div>
+            <div class="text-white text-center select-none">Recherche des artistes dans ton genre et des événements autour de toi !</div>
             <div class="p-4 m-10">
                 <!--<input type="text" id="myInput" placeholder="Cliquez pour localiser"
                     class="text-center text-white bg-gray-800 min-w-[250px] p-2 border rounded w-1/2"
                     style="cursor: pointer;" readonly required/>-->
                 <div class="flex justify-between">
-                    <button id="button-3" onclick="goToEvents()" id="toEvent"><i class="fa-solid fa-magnifying-glass"></i> Événements</button>
-                    <button id="button-3" onclick="goToArtists()" id="toArtists"><i class="fa-solid fa-magnifying-glass"></i> Artistes</button>
+                    <button id="button-3" onclick="goToEvents()" id="toEvent"><i class="fa-solid fa-magnifying-glass p-2"></i> Événements</button>
+                    <button id="button-3" onclick="goToArtists()" id="toArtists"><i class="fa-solid fa-magnifying-glass p-2"></i> Artistes</button>
                 </div>
             </div>
 
             <style>
                 #button-3 {
                   appearance: none;
-                  background-color: #2ea44f;
+                  background-color: white;
                   border: 1px solid rgba(27, 31, 35, .15);
                   border-radius: 6px;
                   box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
@@ -33,6 +35,9 @@
                   line-height: 20px;
                   padding: 6px 16px;
                   position: relative;
+                  color: black;
+                  font-size: 20px;
+                  filter: drop-shadow(5px 5px 4px rgba(176, 127, 255, 0.49));
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
@@ -40,8 +45,6 @@
                   touch-action: manipulation;
                   vertical-align: middle;
                   white-space: nowrap;
-                  margin-right: 20px;
-                  margin-left: 20px;
                 }
 
                 .button-3:focus:not(:focus-visible):not(.focus-visible) {
