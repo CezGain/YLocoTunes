@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class DiscoveryAppController extends Controller
 {
@@ -16,19 +17,30 @@ class DiscoveryAppController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($city, $page = 0, $genre = "")
+    public function index($city, $page = 0, $selectedGenres = [])
     {
-        $url = 'https://app.ticketmaster.com/discovery/v2/events.json?city=' . $city . '&locale=*' . '&page=' . $page . '&radius=50&genreName=' . $genre . '&unit=km&segmentName=Music&apikey=' . $this->api_key;
+        $url = 'https://app.ticketmaster.com/discovery/v2/events.json?city=' . $city . '&locale=*' . '&page=' . $page . '&radius=50&unit=km&segmentName=Music&apikey=' . $this->api_key;
 
         try {
             $response = Http::asForm()->get($url);
             $data = $response->json();
             if (isset($data['page']['totalElements']) && $data['page']['totalElements'] > 0) {
                 $eventsData = $data['_embedded']['events'];
-                usort($eventsData, function($a,$b){
+
+                $filteredEventsData = $eventsData;
+                if ($selectedGenres != "") {
+                    $filteredEventsData = array_filter($eventsData,function ($event) use ($selectedGenres) {
+                        if(in_array($event['classifications'][0]['genre']['name'],$selectedGenres)) {
+                            return true;
+                        }
+                        return false;
+                    });
+                }
+
+                usort($filteredEventsData, function($a, $b) {
                     return strtotime($a['dates']['start']['dateTime']) - strtotime($b['dates']['start']['dateTime']);
                 });
-                return ['eventsData' => $eventsData];
+                return ['eventsData' => $filteredEventsData];
             } else {
                 return ['eventsData' => []];
             }
@@ -36,6 +48,8 @@ class DiscoveryAppController extends Controller
             return ['error' => $e->getMessage()];
         }
     }
+
+
 
     /**
      * Show the form for creating a new resource.

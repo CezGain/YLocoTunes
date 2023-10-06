@@ -136,7 +136,7 @@ class ViewController extends Controller
             "work-out",
             "world-music"
         ],
-        'events'=>["Alternative", "Ballads/Romantic", "Blues", "Chanson Francaise", "Children's Music", "Classical", "Country", "Dance/Electronic", "Folk", "Hip-Hop/Rap", "Holiday", "Jazz", "Latin", "Medieval/Renaissance", "Metal", "New Age", "Other", "Pop", "R&B", "Reggae", "Religious", "Rock", "Undefined", "World"],
+        'events'=>["Alternative", "Ballads/Romantic", "Blues", "Chanson Francaise", "Classical", "Country", "Dance/Electronic", "Folk", "Hip-Hop/Rap", "Holiday", "Jazz", "Latin", "Medieval/Renaissance", "Metal", "New Age", "Other", "Pop", "R&B", "Reggae", "Religious", "Rock", "Undefined", "World"],
     ];
     private $redirectLink = [
         'artists' => "/artists",
@@ -173,7 +173,7 @@ class ViewController extends Controller
 
     public function events(): View
     {
-        $eventsData = (new DiscoveryAppController)->index($_COOKIE['inputValue']);
+        $eventsData = (new DiscoveryAppController)->index($_COOKIE['inputValue'],selectedGenres: json_decode(urldecode($_GET['styleData']), true));
         return view('events', $eventsData);
     }
 }
