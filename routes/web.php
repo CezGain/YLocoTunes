@@ -24,7 +24,8 @@ Route::get('/login', [ViewController::class, 'login'])->name('login');
 Route::get('/register', [ViewController::class, 'register'])->name('register');
 Route::get('/filters', [ViewController::class, 'filters'])->name("filters");
 Route::get('/events', [ViewController::class, 'events'])->name("events");
-Route::get('/results', [ResultController::class, 'showGrid']);
+Route::get('/artists', [ResultController::class, 'showGrid']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ViewController::class, 'dashboard'])->name("dashboard");

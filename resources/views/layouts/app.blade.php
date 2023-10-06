@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel Défilement</title>
+    <link rel="shortcut icon" type="image/png" href="https://cdn.discordapp.com/attachments/1158671272331460638/1159073991739314206/5dfcbb2ebf5a4492911803a08e44ccc0-removebg-preview.png?ex=652fb2c6&is=651d3dc6&hm=567b5a179c03e9a12454e743b104fe7fa692d58970bf0de00cdd2e0e83e33bdc&"/>
 </head>
 <body>
     @yield('content')
@@ -30,7 +29,6 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))

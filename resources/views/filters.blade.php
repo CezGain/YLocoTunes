@@ -17,7 +17,7 @@
                 @endforeach
             </div>
         </div>
-        <form id="styleForm" action="/results" method="GET" class="sub-container" style="height: 12%;">
+        <form id="styleForm" action="{{ $link }}" method="GET" class="sub-container" style="height: 12%;">
             @csrf
             <input type="hidden" id="styleData" name="styleData" value="">
             <button type="submit" class="w-full" id="validated">VALIDER</button>

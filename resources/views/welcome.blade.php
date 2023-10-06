@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            
+
 
             <style>
                 #button-3 {
@@ -81,14 +81,14 @@
             <script>
                 function goToEvents() {
                     if (isLocation()) {
-                        window.location.href = "/events";
+                        window.location.href = "/filters?type=events";
                         return false;
                     }
                 }
 
                 function goToArtists() {
                     if (isLocation()) {
-                    window.location.href = "/filters";
+                    window.location.href = "/filters?type=artists";
                     return false;
                     }
                 }

@@ -9,7 +9,7 @@ class SpotifyController extends Controller
 {
     private $clientId;
     private $clientSecret;
-    
+
     public function __construct()
     {
         $this->clientId = config('services.spotify.client_id');
