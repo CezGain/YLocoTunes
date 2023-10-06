@@ -26,5 +26,4 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/spotify/track/{trackId}', [SpotifyController::class, 'getTrackInfo'])->name('spotify');
 Route::get('/lastfm/artists/{location}', [LastFmController::class, 'getArtistsByLocation'])->name('lastfm.location');
-Route::get('/musicbrainz/artists/{region}', [MusicBrainzController::class, 'getArtistsByRegion'])->name('musicbrainz.region');
 Route::get('/musicbrainz/releases/{artistname}', [MusicBrainzController::class, 'getReleasesByArtist'])->name('musicbrainz.tracks');
