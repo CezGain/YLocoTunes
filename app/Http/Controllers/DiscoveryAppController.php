@@ -28,7 +28,7 @@ class DiscoveryAppController extends Controller
                 $eventsData = $data['_embedded']['events'];
 
                 $filteredEventsData = $eventsData;
-                if ($selectedGenres != "") {
+                if ($selectedGenres != []) {
                     $filteredEventsData = array_filter($eventsData,function ($event) use ($selectedGenres) {
                         if(in_array($event['classifications'][0]['genre']['name'],$selectedGenres)) {
                             return true;
