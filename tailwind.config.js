@@ -18,6 +18,7 @@ export default {
                 transparent: 'transparent',
                 current: 'currentColor',
                 black: colors.black,
+                'black-translucent': 'rgba(0, 0, 0, 0.5)',
                 white: colors.white,
                 emerald: colors.emerald,
                 indigo: colors.indigo,
