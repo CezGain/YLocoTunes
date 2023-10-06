@@ -34,15 +34,14 @@
         <div class="container overflow-y-auto">
             @foreach($data as $index => $item)
                 <div class="artist-card">
-                    <div class="artist-name">{{ $item['name'] }}</div>
-                    @if($index < sizeof($data))
+                    <div class="artist-name">{{ $item['artistLabel']['value'] }}</div>
+                    {{-- @if($index < sizeof($data))
                         @foreach($musics[$index] as $music)
                             <div>{{$music['title']}}</div>
                         @endforeach
                     @else
                         <div>No music.</div>
-                    @endif
-                    <div>Id</div>
+                    @endif --}}
                 </div>
             @endforeach
         </div>

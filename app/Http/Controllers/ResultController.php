@@ -2,39 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\MusicBrainzController;
-use Illuminate\Http\Request;
 class ResultController extends Controller
 {
+
     public function showGrid()
     {
-        $data = (new MusicBrainzController)->getArtistsByRegion($_COOKIE['inputValue']);
-        $musics = [];
-        $filters = $_GET['styleData'] ?? '';
+        $dataClass = new WikidataController;
+        $cityWd = explode("/", $dataClass->getCityWd($_COOKIE['inputValue'])["results"]["bindings"][0]["city"]["value"])[4];
+        $genresWd = $dataClass->getGenresWd(json_decode(urldecode($_GET['styleData']), true));
 
-        foreach ($data as $artist) {
-            if ($artist != null) {
-                $name = $artist['name'];
-                $releasesByArtist = (new MusicBrainzController)->getReleasesByArtist($name);
-                if (is_array($releasesByArtist)) {
-                    $firstThreeReleases = array_slice($releasesByArtist, 0, 3);
-                    $musics[] = $firstThreeReleases;
-                }
-            }
-        }
-        $artists = $this->sortByReleasesTags($data,$musics,$filters);
-        dump($musics);
-        return view('results', compact('artists', 'musics'));
+        $data = $dataClass->show($genresWd, $cityWd);
+
+        return view('results', ['data' => $data]);
     }
 
-    public function sortByReleasesTags($data,$releases,$filters) {
+    public function sortByReleasesTags($data, $releases, $filters)
+    {
         $artists = [];
-        foreach($data as $index => $artist) {
+        foreach ($data as $index => $artist) {
             foreach ($releases[$index] as $release) {
                 dump($release);
                 foreach ($release['tags'] as $tag) {
-                    if (in_array($tag['name'],$filters)) {
-                        array_push($artists,$artist);
+                    if (in_array($tag['name'], $filters)) {
+                        array_push($artists, $artist);
                         break;
                     }
                 }
