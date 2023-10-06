@@ -20,7 +20,7 @@
         <form id="styleForm" action="/results" method="GET" class="sub-container" style="height: 12%;">
             @csrf
             <input type="hidden" id="styleData" name="styleData" value="">
-            <button type="submit" id="validated">VALIDER</button>
+            <button type="submit" class="w-full" id="validated">VALIDER</button>
         </form>
     </div>
 

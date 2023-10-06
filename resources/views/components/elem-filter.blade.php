@@ -12,6 +12,7 @@ background-color: {{ $color }};
 filter: drop-shadow(5px 5px 4px rgba(176, 127, 255, 0.49));
 opacity: 0.5;
 cursor: pointer;
+text-align: center;
 "
     onclick="onStyleClick(this, '{{ $slot }}')">
     <p
