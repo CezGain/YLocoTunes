@@ -26,14 +26,13 @@ Route::get('/filters', [ViewController::class, 'filters'])->name("filters");
 Route::get('/events', [ViewController::class, 'events'])->name("events");
 Route::get('/results', [ResultController::class, 'showGrid']);
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [ViewController::class, 'dashboard'])->name("dashboard");
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/musicbrainz/releases/{artistid}', [MusicBrainzController::class, 'getReleasesByArtistId'])->name('musicbrainz.tracks');
-Route::get('/musicbrainz/artists/{region}', [MusicBrainzController::class, 'getArtistsByRegion'])->name('musicbrainz.region');
 Route::get('/spotify/tracks/{artistname}', [SpotifyController::class, 'getTrackByArtistName'])->name('spotify.artist');
 
 require __DIR__ . '/auth.php';

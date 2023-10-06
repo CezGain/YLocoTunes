@@ -164,6 +164,7 @@ class ViewController extends Controller
 
     public function events(): View
     {
-        return view('events');
+        $eventsData = (new DiscoveryAppController)->index($_COOKIE['inputValue']);
+        return view('events', $eventsData);
     }
 }
