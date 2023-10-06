@@ -15,24 +15,27 @@
             padding: 2%;
         }
 
-        .artist-card {
+        .event-card  {
             color : black;
             background-color: white;
             border-radius: 8px;
             padding: 10px;
             text-align: left;
+            cursor: pointer;
         }
 
-        .artist-name {
+        .event-name {
             font-size: 1.2rem;
             font-weight: 600;
         }
     </style>
     <div class="text-4xl text-white text-center">Résultats autour de @php echo $_COOKIE['inputValue']; @endphp</div>
     <div class="container overflow-y-auto">
-        <div class="artist-card">
-            @dump($eventsData)
-            <div class="artist-name">test</div>
-        </div>
+        @foreach($eventsData as $event)
+            <div class="event-card" onclick="location.href='{{$event['url']}}'">
+                <div class="event-name">{{ $event['name'] }}</div>
+            </div>
+        @endforeach
+
     </div>
 </x-template>
