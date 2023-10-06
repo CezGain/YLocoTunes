@@ -30,12 +30,12 @@
             }
         </style>
         <div class="text-4xl text-white text-center">Résultat autour de @php echo $_COOKIE['inputValue']; @endphp</div>
-        <div class="text-4xl text-white text-center">Filtres actifs : @php echo isset($_GET['styleData']) ? $_GET['styleData'] : ''; @endphp</div>
-        <div class="container">
+        <div class="text-4xl text-white text-center">Filtres actifs : @php echo $_GET['styleData'] ?? ''; @endphp</div>
+        <div class="container overflow-y-auto">
             @foreach($data as $index => $item)
                 <div class="artist-card">
                     <div class="artist-name">{{ $item['name'] }}</div>
-                    @if($index < 13)
+                    @if($index < sizeof($data))
                         @foreach($musics[$index] as $music)
                             <div>{{$music['title']}}</div>
                         @endforeach

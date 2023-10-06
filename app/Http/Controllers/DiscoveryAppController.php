@@ -5,18 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class IrlEventController extends Controller
+class DiscoveryAppController extends Controller
 {
-    private  $api_key = env("API_EVENT_KEY");
+    private $api_key;
 
+    public function __construct()
+    {
+        $this->api_key = config('services.discoveryapp.key');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index($city, $page = 0, $genre = "")
     {
-        $response = Http::asForm()->get('https://app.ticketmaster.com/discovery/v2/events.json?city=' . $city . '&page=' . $page . 'radius=50&genreName=' . $genre . '&unit=km&segmentName=Music&apikey=' . $this->api_key, []);
+        $url = 'https://app.ticketmaster.com/discovery/v2/events.json?city=' . $city . '&locale=*' . '&page=' . $page . '&radius=50&genreName=' . $genre . '&unit=km&segmentName=Music&apikey=' . $this->api_key;
 
-        return ['events' => $response["_embedded"]->events];
+        try {
+            $response = Http::asForm()->get($url);
+
+            $data = $response->json();
+
+            // Check if there are events found
+            if (isset($data['page']['totalElements']) && $data['page']['totalElements'] > 0) {
+                $eventsData = $data['_embedded']['events'];
+                return ['eventsData' => $eventsData];
+            } else {
+                return ['eventsData' => []]; // No events found
+            }
+        } catch (\Exception $e) {
+            return ['error' => $e->getMessage()]; // Handle exceptions
+        }
     }
 
     /**
