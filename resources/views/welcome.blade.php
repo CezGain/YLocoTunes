@@ -8,15 +8,19 @@
             </div>
             <div class="text-white text-center text-xl m-10 select-none">Avec YLocoTunes,</div>
             <div class="text-white text-center select-none">Recherche des artistes dans ton genre et des événements autour de toi !</div>
-            <div class="p-4 m-10">
-                <!--<input type="text" id="myInput" placeholder="Cliquez pour localiser"
+            <div class="flex justify-center m-10">
+                <input type="text" id="myInput" placeholder="Cliquez pour localiser"
                     class="text-center text-white bg-gray-800 min-w-[250px] p-2 border rounded w-1/2"
-                    style="cursor: pointer;" readonly required/>-->
+                    style="cursor: pointer;" readonly required/>
+            </div>
+            <div class="p-4 m-10">
                 <div class="flex justify-between">
                     <button id="button-3" onclick="goToEvents()" id="toEvent"><i class="fa-solid fa-magnifying-glass p-2"></i> Événements</button>
                     <button id="button-3" onclick="goToArtists()" id="toArtists"><i class="fa-solid fa-magnifying-glass p-2"></i> Artistes</button>
                 </div>
             </div>
+
+            
 
             <style>
                 #button-3 {
@@ -76,14 +80,71 @@
 
             <script>
                 function goToEvents() {
-                    window.location.href = "/events";
-                    return false;
+                    if (isLocation()) {
+                        window.location.href = "/events";
+                        return false;
+                    }
                 }
 
                 function goToArtists() {
+                    if (isLocation()) {
                     window.location.href = "/filters";
                     return false;
+                    }
                 }
+
+                function isLocation() {
+                    const inputValue = document.getElementById("myInput").value;
+                    if (inputValue.trim() === "") {
+                        alert("Veuillez cliquer dans le champ pour connaitre votre localisation.");
+                        return false; // Empêche l'envoi du formulaire
+                    }
+                    document.cookie = "inputValue=" + inputValue + ";";
+                    return true; // Le formulaire sera soumis si le champ de texte contient une valeur
+                }
+
+                document.getElementById('myInput').addEventListener('click', function() {
+                    if (navigator.geolocation) {
+                        document.getElementById('myInput').placeholder = 'Chargement en cours...';
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var latitude = position.coords.latitude;
+                            var longitude = position.coords.longitude;
+
+                            // Appel à l'API de géocodage inversé OpenStreetMap Nominatim
+                            var apiUrl =
+                                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+
+                            fetch(apiUrl)
+                                .then(function(response) {
+                                    return response.json();
+                                })
+                                .then(function(data) {
+                                    // Récupération de la ville à partir des résultats
+                                    var city = data.address.city;
+
+                                    // Mise à jour du texte de myInput avec le nom de la ville
+                                    if (city) {
+                                        document.getElementById('myInput').value = city;
+                                    } else {
+                                        document.getElementById('myInput').placeholder =
+                                            'Ville introuvable.';
+                                    }
+                                })
+                                .catch(function(error) {
+                                    // Gérer les erreurs de géocodage ici
+                                    document.getElementById('myInput').placeholder =
+                                        'Erreur de récupération';
+                                });
+                        }, function(error) {
+                            // Gérer les erreurs de géolocalisation ici
+                            document.getElementById('myInput').placeholder = 'Position introuvable';
+                        });
+                    } else {
+                        // Le navigateur ne prend pas en charge la géolocalisation
+                        document.getElementById('myInput').placeholder =
+                            'La localisation n\'est pas dispo.';
+                    }
+                });
             </script>
             <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
