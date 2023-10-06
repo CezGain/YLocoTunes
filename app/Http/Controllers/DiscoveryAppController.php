@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class IrlEventController extends Controller
+class DiscoveryAppController extends Controller
 {
-    private  $api_key = env("API_EVENT_KEY");
+    private $api_key;
 
+    public function __construct()
+    {
+        $this->api_key = config('services.discoveryapp.key');
+    }
     /**
      * Display a listing of the resource.
      */
