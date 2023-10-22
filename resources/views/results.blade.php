@@ -82,14 +82,14 @@
                             </form>
                             @endif
 
-                            @if(Auth::check())
-                            <form action="/add-favorite-artist/{{ $item['artistLabel']['value'] }}" method="post" class="px-2">
-                                <button type="submit"><i class="fa-regular fa-star"></i></button>
-                            </form>
+                            @if(in_array($item['artistLabel']['value'], $favoriteArtists))
+                                    <form action="/delete-favorite-artist/{{ Auth::user()->getAuthIdentifier() }}/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
+                                        <button type="submit"><i class="fa-solid fa-star"></i></button>
+                                    </form>
                             @else
-                            <form action="/delete-favorite-artist/{{ Auth::user()->getAuthIdentifier() }}/{{ $item['artistLabel']['value'] }}" method="post" class="px-2">
-                                <button type="submit"><i class="fa-solid fa-star"></i></button>
-                            </form>
+                                    <form action="/add-favorite-artist/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
+                                        <button type="submit"><i class="fa-regular fa-star"></i></button>
+                                    </form>
                             @endif
                     </div>
                     @endif

@@ -6,15 +6,16 @@ use App\Models\FavoriteArtist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 
 class FavoriteArtistsController extends Controller
 {
-    public function show($userId)
+    public function getFavArtistsByUserId($userId)
     {
         $user = Auth::user(); // Utilisateur connecté
         if ($user->getAuthIdentifier() == $userId) {
-            $favoriteArtists = $user->favoriteArtists;
-            return json_encode($favoriteArtists);
+            $favoriteArtists = $user->favoriteArtists->pluck('artist_name')->toArray();
+            return $favoriteArtists;
         } else {
             return response()->json(['message' => 'Accès non autorisé.'], 403);
         }
@@ -25,7 +26,7 @@ class FavoriteArtistsController extends Controller
         $user = Auth::user(); // Utilisateur connecté
         $favoriteArtist = new FavoriteArtist(['artist_name' => $artistName]);
         $user->favoriteArtists()->save($favoriteArtist);
-        return response()->json(['message' => 'Artiste préféré ajouté avec succès.']);
+        return Redirect::to('/');
     }
 
     public function destroy($userId, $favoriteArtistName)
@@ -35,7 +36,7 @@ class FavoriteArtistsController extends Controller
             $favoriteArtist = FavoriteArtist::find($favoriteArtistName);
             if ($favoriteArtist) {
                 $favoriteArtist->delete();
-                return response()->json(['message' => 'Artiste préféré supprimé avec succès.']);
+                return Redirect::to('/');
             } else {
                 return response()->json(['message' => 'Artiste préféré non trouvé.'], 404);
             }

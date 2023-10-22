@@ -58,7 +58,7 @@
                         <div class="flex flex-wrap justify-center">
                             @foreach($favoriteArtists as $artist)
                                 <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">
-                                    {{$artist->artist_name}}<br>
+                                    {{$artist}}<br>
                                     <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                                     Lyon, France<br><br>
                                 </div>

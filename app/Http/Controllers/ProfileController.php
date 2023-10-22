@@ -17,7 +17,7 @@ class ProfileController extends Controller
     public function edit(Request $request): View
     {
         $fv = new FavoriteArtistsController();
-        $favoriteArtists =json_decode(urldecode($fv->show(Auth::user()->getAuthIdentifier())));
+        $favoriteArtists =$fv->getFavArtistsByUserId(Auth::user()->getAuthIdentifier());
         return view('profile.edit', [
             'user' => $request->user(),
             'favoriteArtists' => $favoriteArtists,

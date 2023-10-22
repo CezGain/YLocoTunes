@@ -24,11 +24,12 @@ class ResultController extends Controller
 
         $data = $dataClass->show($genresWd, $cityWd);
         $filtersTemplates = [];
+        $favoriteArtists = [];
         if(Auth::check()) {
             $filtersTemplates = (new FilterTemplateController)->getAllFiltersTemplatesFromUserId(Auth::user()->getAuthIdentifier(),"artists");
+            $favoriteArtists = (new FavoriteArtistsController)->getFavArtistsByUserId(Auth::user()->getAuthIdentifier());
         }
-
-        return view('results', ['data' => $data,'filtersTemplates'=>$filtersTemplates]);
+        return view('results', ['data' => $data,'filtersTemplates'=>$filtersTemplates,'favoriteArtists'=>$favoriteArtists]);
     }
 
     public function sortByReleasesTags($data, $releases, $filters)
