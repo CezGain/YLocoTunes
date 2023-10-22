@@ -29,10 +29,11 @@
                 font-weight: 600;
             }
         </style>
-        <div class="text-4xl text-white text-center">Résultat autour de @php echo $_COOKIE['inputValue']; @endphp</div>
+        <div class="text-4xl text-white text-center">Résultats autour de @php echo $_COOKIE['inputValue']; @endphp</div>
         <div class="text-4xl text-white text-center">Filtres actifs : @php echo $_GET['styleData'] ?? ''; @endphp</div>
         <div class="container overflow-y-auto">
             @foreach($data as $index => $item)
+                @dump($item)
                 <div class="artist-card">
                     <div class="artist-name">{{ $item['artistLabel']['value'] }}</div>
                     {{-- @if($index < sizeof($data))

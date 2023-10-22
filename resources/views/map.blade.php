@@ -29,7 +29,7 @@
             }).addTo(map);
         });
     } else {
-        console.error('dataj n\'est pas un tableau JSON valide.');
+        console.error('data n\'est pas un tableau JSON valide.');
     }
 </script>
 

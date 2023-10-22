@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoriteArtistsController;
 use App\Http\Controllers\LastFmController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\MusicBrainzController;
@@ -34,6 +35,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('favorite-artists/{userId}', [FavoriteArtistsController::class,'show'])->name('get-fav-artists');
+    Route::get('add-favorite-artist/{artistName}', [FavoriteArtistsController::class, 'store'])->name('add-artist');
+    Route::get('delete-favorite-artist/{userId}/{favoriteArtistName}', [FavoriteArtistsController::class, 'destroy'])->name('delete-artist');
 });
+
 
 require __DIR__ . '/auth.php';

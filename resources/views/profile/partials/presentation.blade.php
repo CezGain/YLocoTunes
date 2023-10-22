@@ -54,43 +54,15 @@
                         <h3 class="text-2xl font-semibold leading-normal mb-2 text-white mb-2">
                             <br>Favorite Artists
                         </h3>
+
                         <div class="flex flex-wrap justify-center">
-                            <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/LowroarRyan.jpg"
-                                    alt="" srcset="" class="w-20 h-20 rounded-lg mx-auto">
-                                Low Roar<br>
-                                <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                Lyon, France<br><br>
-                                <div class="flex space-x-4 justify-center">
-                                    <div class="bg-pink-200 rounded-full p-2">Pop</div>
-                                    <div class="bg-emerald-200 rounded-full p-2">Rock</div>
-                                    <div class="bg-red-200 rounded-full p-2">Funk</div>
+                            @foreach($favoriteArtists as $artist)
+                                <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">
+                                    {{$artist->artist_name}}<br>
+                                    <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+                                    Lyon, France<br><br>
                                 </div>
-                            </div>
-                            <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/LowroarRyan.jpg"
-                                    alt="" srcset="" class="w-20 h-20 rounded-lg mx-auto">
-                                Name<br>
-                                <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                Lyon, France<br><br>
-                                <div class="flex space-x-4 justify-center">
-                                    <div class="bg-pink-200 rounded-full p-2">Pop</div>
-                                    <div class="bg-emerald-200 rounded-full p-2">Rock</div>
-                                    <div class="bg-red-200 rounded-full p-2">Funk</div>
-                                </div>
-                            </div>
-                            <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/LowroarRyan.jpg"
-                                    alt="" srcset="" class="w-20 h-20 rounded-lg mx-auto">
-                                Name<br>
-                                <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-                                Lyon, France<br><br>
-                                <div class="flex space-x-4 justify-center">
-                                    <div class="bg-pink-200 rounded-full p-2">Pop</div>
-                                    <div class="bg-emerald-200 rounded-full p-2">Rock</div>
-                                    <div class="bg-red-200 rounded-full p-2">Funk</div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
