@@ -2,9 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
+
 class ResultController extends Controller
 {
-
+    public function loadSearch(Request $request)
+    {
+        // Récupérer la valeur de l'option sélectionnée
+        $styleData = $request->input('styleData');
+        // Rediriger l'utilisateur vers /artists avec le paramètre styleData
+        return Redirect::to('/'.$_GET['type'].'?styleData='.$styleData);
+    }
     public function showGrid()
     {
         $dataClass = new WikidataController;
@@ -12,8 +23,12 @@ class ResultController extends Controller
         $genresWd = $dataClass->getGenresWd(json_decode(urldecode($_GET['styleData']), true));
 
         $data = $dataClass->show($genresWd, $cityWd);
+        $filtersTemplates = [];
+        if(Auth::check()) {
+            $filtersTemplates = (new FilterTemplateController)->getAllFiltersTemplatesFromUserId(Auth::user()->getAuthIdentifier(),"artists");
+        }
 
-        return view('results', ['data' => $data]);
+        return view('results', ['data' => $data,'filtersTemplates'=>$filtersTemplates]);
     }
 
     public function sortByReleasesTags($data, $releases, $filters)

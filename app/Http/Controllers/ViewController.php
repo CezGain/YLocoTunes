@@ -30,7 +30,8 @@ class ViewController extends Controller
         return view('filters', [
             'musicStyle' => $this->genres[$_GET['type']],
             "colors" => ["rgba(238, 130, 130, 1)", "rgba(130, 186, 238, 1)", "rgba(130, 238, 141, 1)", "rgba(210, 238, 130, 1)", "rgba(238, 130, 163, 1)", "rgba(130, 238, 225, 1)", "rgba(130, 135, 238, 1)", "rgba(238, 208, 130, 1)", "rgba(238, 189, 130, 1)"],
-            "link" => $this->redirectLink[$_GET['type']]
+            "link" => $this->redirectLink[$_GET['type']],
+            "type"=>$_GET['type']
         ]);
     }
 

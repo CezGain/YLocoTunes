@@ -13,7 +13,6 @@ class FavoriteArtistsController extends Controller
     {
         $user = Auth::user(); // Utilisateur connecté
         if ($user->getAuthIdentifier() == $userId) {
-            Log::debug("siuuuu");
             $favoriteArtists = $user->favoriteArtists;
             return json_encode($favoriteArtists);
         } else {

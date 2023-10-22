@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FavoriteArtistsController;
+use App\Http\Controllers\FilterTemplateController;
 use App\Http\Controllers\LastFmController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\MusicBrainzController;
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::get('favorite-artists/{userId}', [FavoriteArtistsController::class,'show'])->name('get-fav-artists');
     Route::get('add-favorite-artist/{artistName}', [FavoriteArtistsController::class, 'store'])->name('add-artist');
     Route::get('delete-favorite-artist/{userId}/{favoriteArtistName}', [FavoriteArtistsController::class, 'destroy'])->name('delete-artist');
+    Route::get('add-filters-template', [FilterTemplateController::class, 'store'])->name('add-filters-tmp');
+    Route::get('loadsearch', [ResultController::class, 'loadSearch'])->name('load-filters');
+
 });
 
 

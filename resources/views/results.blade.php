@@ -35,15 +35,20 @@
         @if(Auth::check())
         <div class="flex justify-center items-center h-screen">
             <div>
-                <form action=".." method="post" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-4 px-4 border border-gray-400 rounded shadow text-center">
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="filterName" type="text" placeholder="Nom de ma sauvegarde">
+                <form action="/add-filters-template" method="get" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-4 px-4 border border-gray-400 rounded shadow text-center">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="filterName" name="nameTemplate" type="text" placeholder="Nom de ma sauvegarde">
+                    <input type="hidden" name="styleData" value="{{$_GET['styleData']}}">
+                    <input type="hidden" name="type" value="artists">
                     <button class="w-full pt-2" type="submit">Sauvegarder ma recherche</button>
                 </form>
                 <br>
-                <form action="artists?_token=" method="post" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-4 px-4 border border-gray-400 rounded shadow text-center">
-                    <select multiple id="countries_multiple" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>toto</option>
+                <form action="/loadsearch" method="get" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-4 px-4 border border-gray-400 rounded shadow text-center">
+                    <select name="styleData" multiple id="countries_multiple" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        @foreach($filtersTemplates as $filter)
+                            <option value="{{ $filter['lines'] }}">{{ $filter['template']['nameTemplate'] }}</option>
+                        @endforeach
                     </select>
+                    <input type="hidden" name="type" value="artists">
                     <button class="w-full pt-2" type="submit">Charger ma recherche</button>
                 </form>
             </div>
@@ -62,7 +67,7 @@
                     @else
                         <div>No music.</div>
                     @endif --}}
-                    
+
                     @if(Auth::check())
                     <div class="flex">
                             @if(Auth::check())
@@ -93,3 +98,4 @@
             @endforeach
         </div>
     </x-template>
+

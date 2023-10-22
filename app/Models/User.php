@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Http\Controllers\FilterTemplateController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -46,5 +47,9 @@ class User extends Authenticatable
     public function favoriteArtists()
     {
         return $this->hasMany(FavoriteArtist::class);
+    }
+    public function favoriteFiltersTemplates()
+    {
+        return $this->hasMany(FilterTemplate::class);
     }
 }

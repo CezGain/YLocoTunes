@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -24,6 +25,10 @@ class DiscoveryAppController extends Controller
         try {
             $response = Http::asForm()->get($url);
             $data = $response->json();
+            $filtersTemplates = [];
+            if(Auth::check()) {
+                $filtersTemplates = (new FilterTemplateController)->getAllFiltersTemplatesFromUserId(Auth::user()->getAuthIdentifier(),"events");
+            }
             if (isset($data['page']['totalElements']) && $data['page']['totalElements'] > 0) {
                 $eventsData = $data['_embedded']['events'];
 
@@ -40,9 +45,9 @@ class DiscoveryAppController extends Controller
                 usort($filteredEventsData, function($a, $b) {
                     return strtotime($a['dates']['start']['dateTime']) - strtotime($b['dates']['start']['dateTime']);
                 });
-                return ['eventsData' => $filteredEventsData];
+                return ['eventsData' => $filteredEventsData,'filtersTemplates'=>$filtersTemplates];
             } else {
-                return ['eventsData' => []];
+                return ['eventsData' => [],'filtersTemplates'=>$filtersTemplates];
             }
         } catch (\Exception $e) {
             return ['error' => $e->getMessage()];
