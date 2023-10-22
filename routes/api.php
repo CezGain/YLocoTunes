@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FavoriteArtistsController;
+use App\Http\Controllers\SpotifyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,12 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/bookmarks', 'BookmarsArtistsController@index')->name('bookmark.index');
-    Route::post('/bookmark', 'BookmarksArtistsController@store')->name('bookmark.store');
-    Route::delete('/bookmark/{artist}', 'BookmarksArtistsController@destroy')->name('bookmark.destroy');
-});
-
 Route::get('/spotify/track/{trackId}', [SpotifyController::class, 'getTrackInfo'])->name('spotify');
-Route::get('/lastfm/artists/{location}', [LastFmController::class, 'getArtistsByLocation'])->name('lastfm.location');
-Route::get('/musicbrainz/releases/{artistname}', [MusicBrainzController::class, 'getReleasesByArtist'])->name('musicbrainz.tracks');

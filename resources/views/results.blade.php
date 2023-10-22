@@ -52,6 +52,7 @@
 
         <div class="container overflow-y-auto">
             @foreach($data as $index => $item)
+                @dump($item)
                 <div class="artist-card">
                     <div class="artist-name">{{ $item['artistLabel']['value'] }}</div>
                     {{-- @if($index < sizeof($data))
