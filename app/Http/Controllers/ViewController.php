@@ -9,7 +9,7 @@ class ViewController extends Controller
 {
     private $genres = [
         'artists' => ["opéra", "comédie musicale", "punk rock", "chanson hebraique", "conjunto norteño", "rap", "jazz", "musique baroque", "musique classique", "symphonie", "concerto", "blues", "flamenco", "musique électronique", "reggae", "punk hardcore", "emo", "Screamo", "grunge", "rock alternatif", "rock", "hip-hop", "samba", "bagad", "ancient music", "batucada", "metal alternatif", "dubstep", "house", "brostep", "moombahton", "huju", "Musique uruguayenne", "rock allemand", "tango argentin", "Chant grégorien", "Protopunk", "opéra taiwanais", "pop", "jazz-funk", "heavy metal", "bachata", "cavatine", "post-metal", "musique indépendante", "folk", "	rhythm and blues", "pop baroque"],
-        'events'=>["Alternative", "Ballads/Romantic", "Blues", "Chanson Francaise", "Classical", "Country", "Dance/Electronic", "Folk", "Hip-Hop/Rap", "Holiday", "Jazz", "Latin", "Medieval/Renaissance", "Metal", "New Age", "Other", "Pop", "R&B", "Reggae", "Religious", "Rock", "Undefined", "World"],
+        'events'=>["Alternative", "Ballads/Romantic", "Blues", "Chanson Francaise", "Children's Music", "Classical", "Country", "Dance/Electronic", "Folk", "Hip-Hop/Rap", "Holiday", "Jazz", "Latin", "Medieval/Renaissance", "Metal", "New Age", "Other", "Pop", "R&B", "Reggae", "Religious", "Rock", "Undefined", "World"],
     ];
     private $redirectLink = [
         'artists' => "/artists",
