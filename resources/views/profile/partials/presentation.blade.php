@@ -12,11 +12,11 @@
                         <div class="relative">
                             <img alt="..."
                                 src="https://static.vecteezy.com/system/resources/previews/008/422/689/original/social-media-avatar-profile-icon-isolated-on-square-background-vector.jpg"
-                                class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+                                class="shadow-xl mx-auto rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
                         </div>
                     </div>
                     <div class="w-full px-4 text-center mt-20">
-                        <div class="flex justify-center py-4 lg:pt-4 pt-8">
+                        <!--<div class="flex justify-center py-4 lg:pt-4 pt-8">
                             <div class="mr-4 p-3 text-center">
                                 <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-400">
                                     3
@@ -29,14 +29,14 @@
                                 </span>
                                 <span class="text-sm text-blueGray-400">Listens</span>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="text-center mt-12">
                     <h3 class="text-2xl font-semibold leading-normal mb-2 text-white mb-2">
                         {{ old('name', $user->name) }}
                     </h3>
-                    <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+                    <!--<div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                         Most listening place :
                         <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
                         Lyon, France
@@ -49,10 +49,10 @@
                             <div class="bg-emerald-200 rounded-full p-2">Rock</div>
                             <div class="bg-red-200 rounded-full p-2">Funk</div>
                         </div>
-                    </div>
+                    </div>-->
                     <div>
                         <h3 class="text-2xl font-semibold leading-normal mb-2 text-white mb-2">
-                            <br>Recently Listened Artists
+                            <br>Favorite Artists
                         </h3>
                         <div class="flex flex-wrap justify-center">
                             <div class="bg-white p-2 rounded-lg shadow-md m-2 text-center">

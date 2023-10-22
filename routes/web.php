@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LastFmController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\MusicBrainzController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
@@ -25,6 +26,7 @@ Route::get('/register', [ViewController::class, 'register'])->name('register');
 Route::get('/filters', [ViewController::class, 'filters'])->name("filters");
 Route::get('/events', [ViewController::class, 'events'])->name("events");
 Route::get('/artists', [ResultController::class, 'showGrid']);
+Route::get('/map', [MapController::class, 'show']);
 
 
 Route::middleware('auth')->group(function () {
