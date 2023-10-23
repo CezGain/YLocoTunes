@@ -70,26 +70,26 @@
 
                     @if(Auth::check())
                     <div class="flex">
-                            @if(Auth::check())
-                            <form action="" method="post" class="px-2">
-                                <button type="submit"><i class="fa-regular fa-heart"></i></button>
-                                <label for="artist" name="nbLikes" class="sr-only">0</label>
-                            </form>
+                            @if(in_array($item['artistLabel']['value'], $likedArtists))
+                                <form action="/remove-like/{{ Auth::user()->getAuthIdentifier() }}/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
+                                    <span>{{$item['nbLikes']}}</span>
+                                    <button type="submit"><i class="fa-solid fa-heart"></i></button>
+                                </form>
                             @else
-                            <form action="" method="post" class="px-2">
-                                <button type="submit"><i class="fa-solid fa-heart"></i></button>
-                                <label for="artist" name="nbLikes" class="sr-only">0</label>
-                            </form>
+                                <form action="/add-like/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
+                                    <span>{{$item['nbLikes']}}</span>
+                                    <button type="submit"><i class="fa-regular fa-heart"></i></button>
+                                </form>
                             @endif
 
                             @if(in_array($item['artistLabel']['value'], $favoriteArtists))
-                                    <form action="/delete-favorite-artist/{{ Auth::user()->getAuthIdentifier() }}/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
-                                        <button type="submit"><i class="fa-solid fa-star"></i></button>
-                                    </form>
+                                <form action="/delete-favorite-artist/{{ Auth::user()->getAuthIdentifier() }}/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
+                                    <button type="submit"><i class="fa-solid fa-star"></i></button>
+                                </form>
                             @else
-                                    <form action="/add-favorite-artist/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
-                                        <button type="submit"><i class="fa-regular fa-star"></i></button>
-                                    </form>
+                                <form action="/add-favorite-artist/{{ $item['artistLabel']['value'] }}" method="get" class="px-2">
+                                    <button type="submit"><i class="fa-regular fa-star"></i></button>
+                                </form>
                             @endif
                     </div>
                     @endif

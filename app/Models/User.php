@@ -48,6 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(FavoriteArtist::class);
     }
+    public function likedArtists()
+    {
+        return $this->hasMany(ArtistsLike::class);
+    }
     public function favoriteFiltersTemplates()
     {
         return $this->hasMany(FilterTemplate::class);

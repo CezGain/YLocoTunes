@@ -40,7 +40,6 @@ class FilterTemplateController extends Controller
     public function store()
     {
         $user = Auth::user();
-        dump($_GET);
         // Create a new FilterTemplate
         $filterTemplate = new FilterTemplate(['nameTemplate'=>$_GET['nameTemplate'],'type'=>$_GET['type']]);
         $user->favoriteFiltersTemplates()->save($filterTemplate);

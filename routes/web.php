@@ -1,14 +1,12 @@
 <?php
 
+use App\Http\Controllers\ArtistsLikeController;
 use App\Http\Controllers\FavoriteArtistsController;
 use App\Http\Controllers\FilterTemplateController;
-use App\Http\Controllers\LastFmController;
 use App\Http\Controllers\MapController;
-use App\Http\Controllers\MusicBrainzController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SpotifyController;
 use App\Http\Controllers\ResultController;
 
 /*
@@ -38,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('add-favorite-artist/{artistName}', [FavoriteArtistsController::class, 'store'])->name('add-artist');
     Route::get('delete-favorite-artist/{userId}/{favoriteArtistName}', [FavoriteArtistsController::class, 'destroy'])->name('delete-artist');
+    Route::get('add-like/{artistName}', [ArtistsLikeController::class, 'store'])->name('add-like');
+    Route::get('remove-like/{userId}/{artistName}', [ArtistsLikeController::class, 'destroy'])->name('remove-like');
     Route::get('add-filters-template', [FilterTemplateController::class, 'store'])->name('add-filters-tmp');
     Route::get('loadsearch', [ResultController::class, 'loadSearch'])->name('load-filters');
 

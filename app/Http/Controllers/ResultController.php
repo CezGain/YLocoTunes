@@ -23,13 +23,28 @@ class ResultController extends Controller
         $genresWd = $dataClass->getGenresWd(json_decode(urldecode($_GET['styleData']), true));
 
         $data = $dataClass->show($genresWd, $cityWd);
-        $filtersTemplates = [];
-        $favoriteArtists = [];
+        $filtersTemplates = $favoriteArtists = $likedArtists = [];
+        $data = $this->addNumberOfLikes($data);
+        usort($data, function ($a, $b) {
+            return $b['nbLikes'] - $a['nbLikes'];
+        });
         if(Auth::check()) {
             $filtersTemplates = (new FilterTemplateController)->getAllFiltersTemplatesFromUserId(Auth::user()->getAuthIdentifier(),"artists");
             $favoriteArtists = (new FavoriteArtistsController)->getFavArtistsByUserId(Auth::user()->getAuthIdentifier());
+            $likedArtists = (new ArtistsLikeController)->getLikedArtistsByUserId(Auth::user()->getAuthIdentifier());
         }
-        return view('results', ['data' => $data,'filtersTemplates'=>$filtersTemplates,'favoriteArtists'=>$favoriteArtists]);
+        return view('results', ['data' => $data,'filtersTemplates'=>$filtersTemplates,'favoriteArtists'=>$favoriteArtists,'likedArtists'=>$likedArtists]);
+    }
+
+    public function addNumberOfLikes(&$data) : array
+    {
+        $newData = [];
+        foreach($data as $artist) {
+            $nbLikes = (new ArtistsLikeController)->getAllLikesFromArtistName($artist['artistLabel']['value']);
+            $artist['nbLikes'] = $nbLikes;
+            array_push($newData, $artist);
+        }
+        return $newData;
     }
 
     public function sortByReleasesTags($data, $releases, $filters)

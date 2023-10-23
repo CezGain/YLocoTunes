@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArtistsLike;
 use App\Models\FavoriteArtist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
-class FavoriteArtistsController extends Controller
+class ArtistsLikeController extends Controller
 {
-    public function getFavArtistsByUserId($userId)
+    public function getAllLikesFromArtistName($artistName)
+    {
+        $likeCount = DB::table('artists_likes')
+            ->where('artist_name', $artistName)
+            ->count();
+
+        return $likeCount;
+    }
+
+    public function getLikedArtistsByUserId($userId)
     {
         $user = Auth::user(); // Utilisateur connecté
         if ($user->getAuthIdentifier() == $userId) {
-            return $user->favoriteArtists->pluck('artist_name')->toArray();
+            return $user->likedArtists->pluck('artist_name')->toArray();
         } else {
             return response()->json(['message' => 'Accès non autorisé.'], 403);
         }
@@ -23,18 +33,18 @@ class FavoriteArtistsController extends Controller
     public function store($artistName)
     {
         $user = Auth::user(); // Utilisateur connecté
-        $favoriteArtist = new FavoriteArtist(['artist_name' => $artistName]);
-        $user->favoriteArtists()->save($favoriteArtist);
+        $likedArtist = new ArtistsLike(['artist_name' => $artistName]);
+        $user->likedArtists()->save($likedArtist);
         return Redirect::to('/');
     }
 
-    public function destroy($userId, $favoriteArtistName)
+    public function destroy($userId, $artistName)
     {
         $user = Auth::user(); // Utilisateur connecté
         if ($user->id == $userId) {
-            $favoriteArtist = FavoriteArtist::find($favoriteArtistName);
-            if ($favoriteArtist) {
-                $favoriteArtist->delete();
+            $likedArtist = ArtistsLike::find($artistName);
+            if ($likedArtist) {
+                $likedArtist->delete();
                 return Redirect::to('/');
             } else {
                 return response()->json(['message' => 'Artiste préféré non trouvé.'], 404);
